@@ -12,4 +12,4 @@ A place to include any other types of information that you'd like to include abo
 
 ### Contact me
 
-[nicolasraus [at] gmail [dot] com](mailto:nicolasraus [at] gmail [dot] com)
+[nicolasraus[at]gmail[dot]com](mailto:nicolasraus[at]gmail[dot]com)
