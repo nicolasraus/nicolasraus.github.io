@@ -18,7 +18,7 @@ avatar: https://avatars.githubusercontent.com/u/2265697?s=400&u=6b3c978e1acb5441
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email:
+  email: nicolasraus [at] gmail [dot] com
   facebook:
   flickr:
   github: nicolasraus
@@ -73,7 +73,7 @@ sass:
   style: :expanded # You might prefer to minify using :compressed
 
 # Use the following plug-ins
-gems:
+plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
 
@@ -85,4 +85,4 @@ exclude:
   - README.md
   - CNAME
 
-theme: minimal
+theme: minima
