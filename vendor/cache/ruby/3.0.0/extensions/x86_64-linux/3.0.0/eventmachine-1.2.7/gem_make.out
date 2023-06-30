@@ -1,0 +1,16 @@
+current directory: /home/nico/Documents/learning/blockchain/nicolasraus.github.io/vendor/cache/ruby/3.0.0/gems/eventmachine-1.2.7/ext/fastfilereader
+/usr/bin/ruby3.0 -I /usr/lib/ruby/vendor_ruby -r ./siteconf20230629-232085-k5e3ya.rb extconf.rb
+creating Makefile
+
+current directory: /home/nico/Documents/learning/blockchain/nicolasraus.github.io/vendor/cache/ruby/3.0.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= clean
+
+current directory: /home/nico/Documents/learning/blockchain/nicolasraus.github.io/vendor/cache/ruby/3.0.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\=
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.so
+
+current directory: /home/nico/Documents/learning/blockchain/nicolasraus.github.io/vendor/cache/ruby/3.0.0/gems/eventmachine-1.2.7/ext/fastfilereader
+make DESTDIR\= install
+/usr/bin/install -c -m 0755 fastfilereaderext.so ./.gem.20230629-232085-7felud
