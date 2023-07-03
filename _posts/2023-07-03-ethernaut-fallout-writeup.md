@@ -7,7 +7,9 @@
 
 This challenge gives us the code of the contract and says that we should take ownership of it to pass the level.
 The code is:
-``` // SPDX-License-Identifier: MIT
+
+```
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
 import 'openzeppelin-contracts-06/math/SafeMath.sol';
