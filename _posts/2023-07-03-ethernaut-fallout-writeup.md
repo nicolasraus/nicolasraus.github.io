@@ -64,6 +64,7 @@ Well,
 
 And that's what's happening here, the constructor function's name is slightly different from the contract's name, becoming a publicly callable function... Then we would only need to call it to take ownership of the contract:
 `contract.Fal1out({value: 1})`
+
 Note that now if we call `await contract.owner()` it returns our own address!!! We did it!
 
 ![Well done](/assets/img/ethernaut_solved.png)
