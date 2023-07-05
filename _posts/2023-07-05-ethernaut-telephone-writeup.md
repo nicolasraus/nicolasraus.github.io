@@ -44,7 +44,7 @@ So how come can we get those values to be different? Well, let's see what each o
 > `msg.sender` is always the address where the current (external) function call came from.
 
 These seem pretty similar right? Let put and example to understand it. Suppose that I have an address `0x1` and call a function from a contract A which have the address `0x2` and this contract interacts with another contract at the address `0x3`. The call chain would be something like this:
-- ` Nico (0x1) -> A (0x2) -> B (0x3)`
+- Nico (0x1) -> A (0x2) -> B (0x3)
 
 At the contract `A` both `tx.origin` and `msg.sender` are going to be `0x1`. But what is the contract B going to see? Well for contract `B` these variables are going to be `tx.origin == 0x1` and `msg.sender == 0x2`.
 
