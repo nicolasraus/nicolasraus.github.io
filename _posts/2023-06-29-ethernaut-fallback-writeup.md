@@ -1,3 +1,5 @@
+![Fallback](/assets/img/BigLevel1.svg)
+
 - [Challenge](#challenge)
 - [Solution](#solution)
    
@@ -7,7 +9,8 @@ This is the first challenge of the ethernaut platform (after the tutorial). It s
 2. you reduce its balance to 0
 
 And then it presents us with the code of the contract:
-```
+
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 

@@ -1,6 +1,8 @@
 ![FAL1OUT](/assets/img/BigLevel2.svg)
+
 - [Challenge](#challenge)
 - [Solution](#solution)
+- [Remediation](#remediation)
 - [References](#references)
    
 # Challenge
@@ -8,7 +10,7 @@
 This challenge gives us the code of the contract and says that we should take ownership of it to pass the level.
 The code is:
 
-```
+```solidity
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.0;
 
@@ -69,7 +71,10 @@ Note that now if we call `await contract.owner()` it returns our own address!!! 
 
 ![Well done](/assets/img/ethernaut_solved.png)
 
+# Remediation
+
 To prevent these problems, version `0.4.22` introduced the `constructor` keyword to specify the constructor function of the contract. Using the same name of the contract as the constructor is now deprecated and shouldn't be used anymore. 
 
 # References
+
 - [SWC-118](https://swcregistry.io/docs/SWC-118)
