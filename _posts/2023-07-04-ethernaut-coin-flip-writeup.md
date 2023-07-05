@@ -93,7 +93,7 @@ contract Solver {
 }
 ```
 
-We can deploy this Solver contract with the ethernaut's contract address as input and the run `solve()` function 10 times.
+We can deploy this Solver contract with the ethernaut's contract address as input and then run `solve()` function 10 times.
 
 I created a Hardhat project that will automatically deploy the contract and run the `solve()` function 10 times! You can find it here: [ethernaut-03-coin-flip-solver](https://github.com/nicolasraus/ethernaut-03-coin-flip-solver)
 
