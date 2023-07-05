@@ -57,7 +57,7 @@ To solve this challenge, it says that we need to guess the correct outcome 10 ti
 
 So, how can we guess the output of the "coin flip". Well let's look at that code. To get the coin flip, it takes the last block number, gets its hash and divides it by a "factor". This will give true or false.
 
-The problem with this "random" generation method is that it's not random at all! Anyone can now what the last block number is... We just need to code some kind of solver or guesser.
+The problem with this "randomness" generation method is that it's not random at all! Anyone can know what the last block number is... We just need to code some kind of solver or guesser.
 
 To do that I copied the `CoinFlip.sol` code given by the challenge and modified it, so it would "guess" what the outcome of `flip()` will be, and then call `coinFlip.flip()` with that same output:
 
@@ -95,7 +95,7 @@ contract Solver {
 
 We can deploy this Solver contract with the ethernaut's contract address as input and the run `solve()` function 10 times.
 
-I created a Hardhat project that will automatically deploy the contract and run `solve()` function 10 times! You can find it here: https://github.com/nicolasraus/ethernaut-03-coin-flip-solver
+I created a Hardhat project that will automatically deploy the contract and run the `solve()` function 10 times! You can find it here: https://github.com/nicolasraus/ethernaut-03-coin-flip-solver
 
 After running `solve()` function 10 times, we can verify that now the `consecutiveWins` variable is 10 by running:
 ```javascript
