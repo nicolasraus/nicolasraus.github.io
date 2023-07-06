@@ -149,7 +149,7 @@ await contract.balanceOf(OWNER_ADDRESS).then(v => v.toString())
 And what is the Solver's balance going to be?
 
 ```javascript
-await contract.balanceOf("0x67Fd61951Cd0291f173aB220304A1c25841ec888").then(v => v.toString())
+await contract.balanceOf(SOLVER_CONTRACT_ADDRESS).then(v => v.toString())
 '115792089237316195423570985008687907853269984665640564039457574007913129639936'
 ```
 
