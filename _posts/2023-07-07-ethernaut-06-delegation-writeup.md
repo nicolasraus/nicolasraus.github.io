@@ -126,17 +126,21 @@ Look at these two contracts they are very similar and almost the same. They both
 
 ![SimpleStorages deployed in RemixIDE](../assets/img/delegation_remix.png)
 
-Now, what is going to happen if we call `delegate(1)` which contract is going to update their variable? SimpleStorage1 or SimpleStorage2? Let's try it:
+Now, what is going to happen if we call `delegate(1)`? Which contract is going to update their variable? SimpleStorage1 or SimpleStorage2? Let's try it:
 
 ![SimpleStorage delegation in RemixIDE](../assets/img/delegation_remix2.png)
 
-Note: when we call an external contract function with `call()` or `delegatecall()` our contract doesn't know the ABI that's why we need to specify the target function its function signature. That's why we use `abi.encodeWithSignature()`.
+Notice that when calling delegate with a value and then get, the updated contract is SimpleStorage2!! Even though it's calling SimpleStorage1 to manage the variables and values!
+
+*Note: when we call an external contract function with `call()` or `delegatecall()` our contract doesn't know the ABI of the target contract. We need to specify the target function by its function signature. That's why we use `abi.encodeWithSignature()`.*
 
 ## Solution (continued)
 
-So going back to the level. We are interacting with the `Delegation` contract so in order to modify the `owner` it is necessary to call `pwn()` from the `Delegate` contract through `delegatecall`.
+So going back to the level. We are interacting with the `Delegation` contract which only has one function which is `fallback()`. This function calls `Delegate` through `delegatecall()`. If we inspect the `Delegate` contract, we notice that there is in fact a function that sets the `msg.sender` as the owner of the contract, that function is `pwn()`. And that's exactly what we need!!! 
 
-First of all we notice that the only call to `Delegate` through `delegatecall` is done in the `fallback()` function from `Delegation`. To execute the `fallback()` function we can call the contract through `sendTransaction()`. And then we have to pass the signature of `pwn()` as input.
+Summarizing, in order to modify the `owner` it is necessary to call `pwn()` from the `Delegate` contract through `delegatecall`.
+
+We noticed before that the only call to `Delegate` through `delegatecall` is done in the `fallback()` function from `Delegation`. To execute the `fallback()` function we can call the contract through `sendTransaction()`. And then we have to pass the signature of `pwn()` as input.
 To get the signature of `pwn()` we can call:
 
 ```javascript
