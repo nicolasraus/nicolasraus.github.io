@@ -1,4 +1,4 @@
-![Token](/assets/img/BigLevel7.svg)
+![Force](/assets/img/BigLevel7.svg)
 
 - [Challenge](#challenge)
 - [Solution](#solution)
