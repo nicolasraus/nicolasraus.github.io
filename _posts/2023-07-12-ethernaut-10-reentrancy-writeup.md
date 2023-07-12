@@ -66,7 +66,7 @@ This contract has three public functions which are: `donate()`, `balanceOf()` an
 
 - `withdraw()`: this function first checks if the input "_amount" is smaller or equal than the balance of the `msg.sender` (implying that only the sender can withdraw the funds and that they need to have that amount of eth, or more, in their balance). If the conditions passes, it will then send the requested amount to the `msg.sender` and update the balance of that address subtracting the withdrew amount.
 
-Note that inside `withdraw()` there is a call to the `msg.sender` to transfer the requested amount. This `msg.sender` could be a wallet or a contract ;) . And, as in the previous level [King WriteUp](2023-07-11-ethernaut-09-king-writeup.md),  the contract, can execute code trhough `receive()` or `fallback()` when funds are sent.
+Note that inside `withdraw()` there is a call to the `msg.sender` to transfer the requested amount. This `msg.sender` could be a wallet or a contract ;) . And, as in the previous level [King WriteUp](/2023-07-11-ethernaut-09-king-writeup/), the contract, can execute code through `receive()` or `fallback()` when funds are sent.
 
 Also, if we look closer to the `withdraw()` function, we can see that it first transfer the requested funds and then updates the balance. This is a very important part of the re-entrancy vulnerabilities... 
 
@@ -120,7 +120,7 @@ contract Solver {
 
 *Note: after withdrawing all the balance of the contract, I added a statement to send stolen funds back to our wallet, so we don't lose those funds :)*
 
-Now we can deploy this `Solver.sol` with the `Reentrance` address as input. And then execute `solve()` sending 1000000000000000 Wei to it. This will make the contract to send 0.001 ETH to the target, incremeting it's balance, then call withdraw which will make the target to send us back the 0.001 ETH, activating thus the `receive()` function, which will withdraw the remaining 0.001 ETH that the target has on its balance. Stealing thus all the funds :)
+Now we can deploy this `Solver.sol` with the `Reentrance` address as input. And then execute `solve()` sending 1000000000000000 Wei to it. This will make the contract to send 0.001 ETH to the target, incrementing its balance, then call withdraw which will make the target to send us back the 0.001 ETH, activating thus the `receive()` function, which will withdraw the remaining 0.001 ETH that the target has on its balance. Stealing thus all the funds :)
 
 After doing this, we can check again the balance of the contract:
 
@@ -141,3 +141,4 @@ So, that's it! We just won the level :D, now we only have to click "Submit Insta
 # References
 
 - [SWC-107](https://swcregistry.io/docs/SWC-107)
+- [Hack Solidity: Reentrancy Attack](https://hackernoon.com/hack-solidity-reentrancy-attack)
