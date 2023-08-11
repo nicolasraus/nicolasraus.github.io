@@ -105,23 +105,23 @@ For the first part we have the `msg.sender` (which is the Solver’s contract ad
 
 The second part is the input of the `enter()` function converted to uint64.
 
-And lastly we have the maximum value for `uint64` which is <img src="https://render.githubusercontent.com/render/math?math=2^{64}-1"> or `0xffffffffffffffff`. 
+And lastly we have the maximum value for `uint64` which is $2^{64}-1$ or `0xffffffffffffffff`. 
 
 This gate takes the Solver’s address, XORs it with our input (`_gateKey`) and checks if all of its bits are 1. 
 
 In our solver, we won't be able to manually craft the `_gateKey` as input ourselves (as in the previous level), because we will not know the `Solver` address until it’s deployed… So, we will need to calculate it in the constructor. Then we will need to get the ones’ complement of the solver address so when it gets XORed with the address, it will give all ones (which is the requirement of the gate three). Let's see an example:
 
-Having <img src="https://render.githubusercontent.com/render/math?math=A = 00001111_2"> and <img src="https://render.githubusercontent.com/render/math?math=B = \neg A = 11110000_2">
+Having $A = 00001111_2$ and $B = \neg A = 11110000_2$
 
-Then <img src="https://render.githubusercontent.com/render/math?math=A \oplus B = 111111111_2">
+Then $A \oplus B = 111111111_2$
 
 To calculate the ones' complement of our contract's address we will need to do a bitwise negation. There isn’t a function in solidity to do this, but we can use the XOR to get it!
 
 To get the one’s complement or bitwise negation we can XOR a variable with `0xFFFF`. E.g.:
 
-<img src="https://render.githubusercontent.com/render/math?math=A \oplus \texttt{0xFFFF} = 11110000_2 = B">
+$A \oplus \texttt{0xFFFF} = 11110000_2 = B$
 
-Thus <img src="https://render.githubusercontent.com/render/math?math=A \oplus \neg A = A \oplus B = 11111111_2 = \texttt{0xFFFF}">
+Thus $A \oplus \neg A = A \oplus B = 11111111_2 = \texttt{0xFFFF}$
 
 Which is what we need to solve the challenge! Now let’s construct our solver:
 
