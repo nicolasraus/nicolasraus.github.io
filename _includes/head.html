@@ -3,24 +3,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   {% capture title %}
-    {%- if page.share-title -%}
-      {{ page.share-title | strip_html | xml_escape }}
-    {%- elsif page.title -%}
-      {{ page.title | strip_html | xml_escape  }}
-    {%- else -%}
-      {{ site.title | strip_html | xml_escape }}
-    {%- endif -%}
+  {%- if page.share-title -%}
+  {{ page.share-title | strip_html | xml_escape }}
+  {%- elsif page.title -%}
+  {{ page.title | strip_html | xml_escape }}
+  {%- else -%}
+  {{ site.title | strip_html | xml_escape }}
+  {%- endif -%}
   {% endcapture %}
 
   {% capture description %}
-    {%- if page.share-description -%}
-      {{ page.share-description | strip_html | xml_escape }}
-    {%- elsif page.subtitle -%}
-      {{ page.subtitle | strip_html | xml_escape }}
-    {%- else -%}
-      {%- assign excerpt_length = site.excerpt_length | default: 50 -%}
-      {{ page.content | strip_html | xml_escape | truncatewords: excerpt_length | strip }}
-    {%- endif -%}
+  {%- if page.share-description -%}
+  {{ page.share-description | strip_html | xml_escape }}
+  {%- elsif page.subtitle -%}
+  {{ page.subtitle | strip_html | xml_escape }}
+  {%- else -%}
+  {%- assign excerpt_length = site.excerpt_length | default: 50 -%}
+  {{ page.content | strip_html | xml_escape | truncatewords: excerpt_length | strip }}
+  {%- endif -%}
   {% endcapture %}
 
   <title>{{ title }}</title>
@@ -49,33 +49,33 @@
   {% include cloudflare_analytics.html %}
 
   {% if layout.common-ext-css %}
-    {% for css in layout.common-ext-css %}
-      {% include ext-css.html css=css %}
-    {% endfor %}
+  {% for css in layout.common-ext-css %}
+  {% include ext-css.html css=css %}
+  {% endfor %}
   {% endif %}
 
   {% if layout.common-css %}
-    {% for css in layout.common-css %}
-      <link rel="stylesheet" href="{{ css | relative_url }}">
-    {% endfor %}
+  {% for css in layout.common-css %}
+  <link rel="stylesheet" href="{{ css | relative_url }}">
+  {% endfor %}
   {% endif %}
 
   {% if site.site-css %}
-    {% for css in site.site-css %}
-      <link rel="stylesheet" href="{{ css | relative_url }}">
-    {% endfor %}
+  {% for css in site.site-css %}
+  <link rel="stylesheet" href="{{ css | relative_url }}">
+  {% endfor %}
   {% endif %}
 
   {% if page.ext-css %}
-    {% for css in page.ext-css %}
-      {% include ext-css.html css=css %}
-    {% endfor %}
+  {% for css in page.ext-css %}
+  {% include ext-css.html css=css %}
+  {% endfor %}
   {% endif %}
-  
+
   {% if page.css %}
-    {% for css in page.css %}
-      <link rel="stylesheet" href="{{ css | relative_url }}">
-    {% endfor %}
+  {% for css in page.css %}
+  <link rel="stylesheet" href="{{ css | relative_url }}">
+  {% endfor %}
   {% endif %}
 
   {% if site.fb_app_id %}
@@ -87,19 +87,19 @@
   {% endif %}
 
   {%- capture img -%}
-    {%- if page.share-img -%}
-      {{ page.share-img }}
-    {%- elsif page.cover-img -%}
-      {%- if page.cover-img.first -%}
-        {{ page.cover-img[0].first.first }}
-      {%- else -%}
-        {{ page.cover-img }}
-      {%- endif -%}
-    {%- elsif page.thumbnail-img -%}
-      {{ page.thumbnail-img }}
-    {%- elsif site.avatar -%}
-      {{ site.avatar }}
-    {% endif %}
+  {%- if page.share-img -%}
+  {{ page.share-img }}
+  {%- elsif page.cover-img -%}
+  {%- if page.cover-img.first -%}
+  {{ page.cover-img[0].first.first }}
+  {%- else -%}
+  {{ page.cover-img }}
+  {%- endif -%}
+  {%- elsif page.thumbnail-img -%}
+  {{ page.thumbnail-img }}
+  {%- elsif site.avatar -%}
+  {{ site.avatar }}
+  {% endif %}
   {%- endcapture -%}
   {%- assign img=img | strip -%}
 
@@ -140,13 +140,51 @@
   {% include matomo.html %}
 
   {% if page.comments and site.staticman.repository and site.staticman.branch %}
-  <link rel="stylesheet" href="{{ "/assets/css/staticman.css" | relative_url }}">
+  <link rel="stylesheet" href="{{ " /assets/css/staticman.css" | relative_url }}">
   {% endif %}
 
   {% if page.head-extra %}
-    {% for file in page.head-extra %}
-      {% include {{ file }} %}
-    {% endfor %}
+  {% for file in page.head-extra %}
+  {% include {{ file }} %}
+  {% endfor %}
   {% endif %}
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"> </script>
+
+  <script>
+    MathJax = {
+      loader: {load: ['[tex]/newcommand', '[tex]/color']},
+      tex: {
+        packages: { '[+]': ['newcommand', 'color'] },
+        inlineMath: [['$', '$']],
+        displayMath: [['$$', '$$'], ['\[', '\]']],
+        macros: {
+          bold: ['{\bf #1}', 1],
+          ddfrac: ['{\frac{\displaystyle #1}{\displaystyle #2}}', 2],
+          abs: ['\left\lvert #2 \right\rvert_{\text{#1}}', 2, ""],
+          floor: ['\left\lfloor #2 \right\rfloor_{\text{#1}}', 2, ""],
+          sfrac: ['{ \frac {\ #1 \ }{#2}}', 2],
+          lcm: ['\operatorname{lcm}#1', 1]
+        },
+        processEscapes: true,
+        processEnvironments: true,
+        processRefs: true,
+        digits: /^(?:[0-9]+(?:\{,\}[0-9]{3})*(?:\.[0-9]*)?|\.[0-9]+)/,
+        tags: 'ams',
+        tagSide: 'right',
+        tagIndent: '0.8em',
+        useLabelIds: true,
+        multlineWidth: '85%',
+      },
+      chtml: {
+        scale: 1.1
+      },
+      svg: {
+        scale: 1.3
+      }
+    };
+  </script>
+
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
 </head>
