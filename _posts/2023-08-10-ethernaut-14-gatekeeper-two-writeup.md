@@ -1,4 +1,4 @@
-![Gatekeeper One](/assets/img/BigLevel14.svg)
+![Gatekeeper Two](/assets/img/BigLevel14.svg)
 
 - [Challenge](#challenge)
 - [Solution](#solution)
