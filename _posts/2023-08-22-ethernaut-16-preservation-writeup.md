@@ -139,7 +139,7 @@ await contract.timeZone1Library()
 '0x0000000000000000000000000000000000000001'
 ```
 
-What does this mean? Well, when we first called `setFirstTime(1)` the contract delegated the execution into the address stored in `timeZone1Library`, which was an instance of the `LibraryContract`. This contract only have one variable, a `uint`. That's why it modified the first (and only the first) variable of the `Preservation` contract. And why haven't it set to `9` the second time we called it? Well, now `timeZone1Library` has `0x0000000000000000000000000000000000000001` stored in it. Which is NOT the address of the `LibraryContract`... Then nothing happened.
+What does this mean? Well, when we first called `setFirstTime(1)` the contract delegated the execution into the address stored in `timeZone1Library`, which was an instance of the `LibraryContract`. This contract only have one variable, a `uint`. That's why it modified the first (and only the first) variable of the `Preservation` contract. And why hasn't it set to `9` the second time we called it? Well, now `timeZone1Library` has `0x0000000000000000000000000000000000000001` stored in it. Which is NOT the address of the `LibraryContract`... Then nothing happened.
 
 Let's call `setSecondTime` now and see what happens, should it modify `timeZone2Library` variable?
 
@@ -154,7 +154,7 @@ await web3.eth.getStorageAt(contract.address, 0) // timeZone1Library variable
 '0x0000000000000000000000000000000000000000000000000000000000000009'
 ```
 
-It haven't modified the `timeZone2Library` but `timeZone1Library` instead... And this makes total sense, as the contract running on the address stored in `timeZone2Library` is the `LibraryContract` which modifies only one variable, and is the first one in the storage.
+It hasn't modified the `timeZone2Library` but `timeZone1Library` instead... And this makes total sense, as the contract running on the address stored in `timeZone2Library` is the `LibraryContract` which modifies only one variable, and is the first one in the storage.
 
 So, how could we manage to modify the owner variable?
 
