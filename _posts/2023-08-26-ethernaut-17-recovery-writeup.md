@@ -108,8 +108,8 @@ the account nonce.
 So how can we calculate this address from the address of the creator and the nonce. I've used the code from [this reply](https://ethereum.stackexchange.com/a/47083) to get the address.
 
 ```solidity
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.8.4;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
 
 contract AddressByNonceCalculator {
