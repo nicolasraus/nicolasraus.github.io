@@ -130,7 +130,7 @@ await contract.getSwapPrice(token1, token2, 10).then(v=>parseInt(v))
 
 Where does this value come from? getSwapPrice would multiply "what we want to exchange from token1" by "the balance of the dex of token2" divided by "the balance of the dex of token1". This is $10*100/100 = 10$. Then, if we exchange 10 token1 we would get 10 token2. Pretty simple and straight forward right? How would the liquidity pool and our balances look after that exchange? We would have 0 token1 and 20 token2, and the exchange would have 110 token1 and 90 token2... 
 
-Now, what would happen if we call swap again but this time we want to exchange all of our token2? $20*110/90$ right? Also note the order of the operations of the getSwapPrice function! It actually does $(20*110)/90$ which is $2200/90 => 24.44$ as they are `uint` this will actually return "24". So if we change all of or 20 token2 we will get 24 token1? Remember that we started this level with 20 tokens in total... and the exchange rate was 1:1, but now we have 24 tokens? We start to see a pattern right?
+Now, what would happen if we call swap again but this time we want to exchange all of our token2? $20\*110/90$ right? Also note the order of the operations of the getSwapPrice function! It actually does $(20*110)/90$ which is $2200/90 => 24.44$ as they are `uint` this will actually return "24". So if we change all of or 20 token2 we will get 24 token1? Remember that we started this level with 20 tokens in total... and the exchange rate was 1:1, but now we have 24 tokens? We start to see a pattern right?
 
 At this point we have 24 token1 and 0 token2, and the exchange has 86 token1 and 110 token2. Now, let's exchange are 24 token1: $(24*110)/84 = 30$.
 
