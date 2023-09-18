@@ -104,7 +104,7 @@ Let's solve it then!
 1. We start by creating a third token, we can deploy a `SwappableToken` in [remix](https://remix.ethereum.org/) with the following input: `dexAddress, token3, TKN3, 4`.
 2. Then we need to transfer 1 `TKN3` to the `DexTwo` contract: `token3.transfer(dexTwoAddress, 1)`.
 3. Now, before exchanging the tokens, we need to approve `DexTwo` to transfer `token3` in our behalf (in order for swap function to successfully execute): `token3.approve(dexTwoAddress, 3)`.
-4. And, lastly, we do the actual `swaps`: `dex.swap(token3Address, token1, 1)` and `dex.swap(token3Address, token2, 2)`
+4. And, lastly, we do the actual `swaps`: `dex.swap(token3, token1, 1)` and `dex.swap(token3, token2, 2)`
 
 After doing this, we should have all token1 and token2, right? Let's verify it:
 
