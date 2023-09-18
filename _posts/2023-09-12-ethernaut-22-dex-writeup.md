@@ -132,21 +132,21 @@ Where does this value come from? getSwapPrice would multiply "what we want to ex
 
 Now, what would happen if we call swap again but this time we want to exchange all of our token2? $20\*110/90$ right? Also note the order of the operations of the getSwapPrice function! It actually does $(20*110)/90$ which is $2200/90 => 24.44$ as they are `uint` this will actually return "24". So if we change all of or 20 token2 we will get 24 token1? Remember that we started this level with 20 tokens in total... and the exchange rate was 1:1, but now we have 24 tokens? We start to see a pattern right?
 
-At this point we have 24 token1 and 0 token2, and the exchange has 86 token1 and 110 token2. Now, let's exchange are 24 token1: $(24*110)/84 = 30$.
+At this point we have 24 token1 and 0 token2, and the exchange has 86 token1 and 110 token2. Now, let's exchange are 24 token1: $\frac{24*110}{86} = 30$.
 
-We then have 0 token1, 30 token2 and the dex has 110 and 80 respectively. Let's swap again all of our token2: $(30 * 110) / 80 = 41$.
+We then have 0 token1, 30 token2 and the dex has 110 and 80 respectively. Let's swap again all of our token2: $\frac{30*110}{80} = 41$.
 
-Our balance is now 41 token1, 0 token2 and the exchange's 69 token1 and 110 token2. So? We swap again! $41 * 110 / 69 = 65$.
+Our balance is now 41 token1, 0 token2 and the exchange's 69 token1 and 110 token2. So? We swap again! $\frac{41*110}{69} = 65$.
 
 By now, we have 0 token1 and 65 token2, and the contract has 110 token1 and 45 token2. If at this point we would want to swap all of our 65 token2 the swapAmount of token1 would be 158, but the exchange doesn't have that amount of token1, then this transaction would get reverted. We need to calculate how many tokens we have to transfer to get the 110 token1 of the exchange. Then we need to find $x$ such that:
 
-$x * 110 / 45 = 110$
+$\frac{x * 110}{45} = 110$
 
-$x = 110 * 45 / 110$ 
+$x = \frac{110*45}{110}$ 
 
 $x = 45$
 
-So, if we now swap 45 token2 we would get 110 token1, by doing this we would be winning the level. Also note that if at this point someone calls `getSwapPrice(token1, token2, 1)` this will try to do $1 * 90 / 0$ and will fail.
+So, if we now swap 45 token2 we would get 110 token1, by doing this we would be winning the level. Also note that if at this point someone calls `getSwapPrice(token1, token2, 1)` this will try to do $\frac{1 * 90}{0}$ and will fail.
 
 Now that we know what we have to do to win the level, let's do it:
 
